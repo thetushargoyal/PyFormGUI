@@ -5,6 +5,13 @@ import config
 
 icon = tk.PhotoImage(file = r"C:\Users\Tushar\Desktop\Work\InCore Semiconductors\images\info_icon.png")
 
+def make_label(window_name, label_val, font_val, setoff):
+    
+    label = tk.Label(window_name, text = label_val, font= font_val)
+    label.place(x = config.current_x + setoff, y = config.current_y)
+    window_name.update()
+    return label
+
 def createLabel(label_val, window_name, photo = icon, font_name = 'Arial', font_size = 11, _infobox = False, heading = '', description = '', setoff = 0):
 
 
@@ -18,13 +25,6 @@ def createLabel(label_val, window_name, photo = icon, font_name = 'Arial', font_
     window_name.update()
 
     config.update_config()
-
-def make_label(window_name, label_val, font_val, setoff):
-    
-    label = tk.Label(window_name, text = label_val, font= font_val)
-    label.place(x = config.current_x + setoff, y = config.current_y)
-    window_name.update()
-    return label
 
 def createInfoBox(_infobox, heading, description, window_name, photo, width):
 
