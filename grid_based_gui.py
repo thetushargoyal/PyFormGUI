@@ -22,8 +22,6 @@ label = tk.Label(window, text="Configure Chromite Core")
 name_var=tk.StringVar()
 passw_var=tk.StringVar()
 
-
-
 # defining a function that will
 # get the name and password and
 # print them on the screen
