@@ -101,7 +101,7 @@ def createTrueFalse(label_val,
 
     style = ttk.Style()
  
-    style.configure('TRadiobutton', font = ('Arial', 13))
+    style.configure('TRadiobutton', font = (font_name, font_size))
 
 
     label = make_label(window_name, label_val, font_val, setoff)
