@@ -26,6 +26,7 @@ def createLabel(label_val, window_name, font_name = 'Arial', font_size = 11, _in
 
     label = make_label(window_name, label_val, font_val, setoff)
     width = label.winfo_width()
+    
     createInfoBox(_infobox, heading, description, window_name, width)   
     window_name.update()
 
@@ -120,13 +121,11 @@ def createCounterField(window_name, label_val, font_val, _infobox = False, headi
     counter_var=tk.IntVar(value=0)
 
     def increment():
-    
         counter = counter_var.get()
         counter += 1
         counter_var.set(counter)
 
     def decrement():
-    
         counter = counter_var.get()
         if (counter > 0):
             counter -= 1
