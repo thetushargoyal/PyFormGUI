@@ -145,20 +145,19 @@ def createCounterField(window_name, label_val, font_val, photo = icon, _infobox 
             counter -= 1
             counter_var.set(counter)
 
-    counter_entry = tk.Entry(window_name,textvariable = counter_var, font=('calibre',10,'normal'),justify='center', width= 5)
+    counter_entry = tk.Entry(window_name,textvariable = counter_var, font=('Arial',11),justify='center', width= 5)
     increment_counter = tk.Button(window_name, command = increment, text='+', width= 2)
     decrement_counter = tk.Button(window_name, command = decrement, text='-', width=2)
 
     label = make_label(window_name, label_val, font_val, setoff)
     width = label.winfo_width()
+
     createInfoBox(_infobox, heading, description, window_name, photo, width)
 
-    increment_counter.place(x = width + 40 + config.current_x + 90, y = config.current_y)
-
-    counter_entry.place(x = width + 40 + config.current_x + 40, y = config.current_y + 3)
-    
     decrement_counter.place(x = width + 40 + config.current_x, y = config.current_y)
-
-    config.current_y = config.current_y + 30
+    counter_entry.place(x = width + 40 + config.current_x + 40, y = config.current_y + 3)
+    increment_counter.place(x = width + 40 + config.current_x + 90, y = config.current_y)
+    
+    config.update_config()
 
     return counter_var
