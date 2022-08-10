@@ -9,7 +9,7 @@ root.resizable(False, False)
 root.title('Radio Button Demo')
 
 selected_size = tk.StringVar()
-sizes = (('Small', 'S'),
+sizes = (('de', 'S'),
          ('Medium', 'M'),
          ('Large', 'L'),
          ('Extra Large', 'XL'),
