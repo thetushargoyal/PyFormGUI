@@ -8,14 +8,6 @@ root.geometry('300x220')
 root.resizable(False, False)
 root.title('Radio Button Demo')
 
-
-def show_selected_size():
-    showinfo(
-        title='Result',
-        message=selected_size.get()
-    )
-
-
 selected_size = tk.StringVar()
 sizes = (('Small', 'S'),
          ('Medium', 'M'),
