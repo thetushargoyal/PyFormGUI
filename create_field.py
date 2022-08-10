@@ -12,22 +12,7 @@ def make_label(window_name, label_val, font_val, setoff):
     window_name.update()
     return label
 
-def createLabel(label_val, window_name, photo = icon, font_name = 'Arial', font_size = 11, _infobox = False, heading = '', description = '', setoff = 0):
-
-
-    font_val = font_name + " " + str(font_size)
-    state = 'normal'
-
-
-    label = make_label(window_name, label_val, font_val, setoff)
-    width = label.winfo_width()
-    createInfoBox(_infobox, heading, description, window_name, photo, width)   
-    window_name.update()
-
-    config.update_config()
-
-def createInfoBox(_infobox, heading, description, window_name, photo, width):
-
+def createInfoBox(_infobox, heading, description, window_name, width, photo = icon):
 
     def infoBox():
         tkinter.messagebox.showinfo(heading, description)
@@ -35,8 +20,18 @@ def createInfoBox(_infobox, heading, description, window_name, photo, width):
     if (_infobox == True):
         tk.Button(window_name, image = photo, command = infoBox,  relief = 'flat').place(x=config.current_x + width, y=config.current_y+3)
 
-def createTextEntry(label_val, window_name, photo = icon, font_name = 'Arial', font_size = 11, default_fixed = False, fixed_val = '', _infobox = False, heading = '', description = '', setoff = 0, numbers_only = False):
+def createLabel(label_val, window_name, font_name = 'Arial', font_size = 11, _infobox = False, heading = '', description = '', setoff = 0):
 
+    font_val = font_name + " " + str(font_size)
+
+    label = make_label(window_name, label_val, font_val, setoff)
+    width = label.winfo_width()
+    createInfoBox(_infobox, heading, description, window_name, width)   
+    window_name.update()
+
+    config.update_config()
+
+def createTextEntry(label_val, window_name, font_name = 'Arial', font_size = 11, default_fixed = False, fixed_val = '', _infobox = False, heading = '', description = '', setoff = 0, numbers_only = False):
 
     font_val = font_name + " " + str(font_size)
     state = 'normal'
@@ -49,14 +44,10 @@ def createTextEntry(label_val, window_name, photo = icon, font_name = 'Arial', f
         mystr.set(fixed_val)
         state='readonly'
 
- # register 
-
-    total_width = 0
-
     label = make_label(window_name, label_val, font_val, setoff)
     width = label.winfo_width()
-    height = label.winfo_height()
-    createInfoBox(_infobox, heading, description, window_name, photo, width)
+
+    createInfoBox(_infobox, heading, description, window_name, width)
 
     if (numbers_only == True):
         def validate(u_input): # callback function
@@ -66,22 +57,14 @@ def createTextEntry(label_val, window_name, photo = icon, font_name = 'Arial', f
     else:
         tk.Entry(window_name,textvariable=mystr, state=state, font=(font_name, font_size,'normal'), justify='center').place(x = config.current_x + width + 40, y = config.current_y, width= 100, height = 20)
 
-
-    
-    
     window_name.update()
 
-
-    total_width = 0
-
     config.update_config()
-
 
     return mystr
 
 def createTrueFalse(label_val, 
                     window_name, 
-                    photo = icon,
                     font_name = 'Arial', 
                     font_size = 11, 
                     default_fixed = False, 
@@ -103,32 +86,36 @@ def createTrueFalse(label_val,
  
     style.configure('TRadiobutton', font = (font_name, font_size))
 
-
     label = make_label(window_name, label_val, font_val, setoff)
     width = label.winfo_width()
-    createInfoBox(_infobox, heading, description, window_name, photo, width + setoff)
+
+    createInfoBox(_infobox, heading, description, window_name, width + setoff)
+
     ttk.Radiobutton(window_name,  text = "True", state=state, variable = mystr, value = 1).place(x = config.current_x + width + 40 + setoff, y =config.current_y)
     ttk.Radiobutton(window_name,  text = "False", state=state, variable = mystr, value = 0).place(x = config.current_x + width + 100 + setoff, y =config.current_y)
 
-    config.current_y = config.current_y + 30
+    config.update_config()
 
-def createDropDown(window_name, option_list, label_val, font_val, photo = icon, _infobox = False, heading = '', description = '', setoff = 0):
+def createDropDown(window_name, option_list, label_val, font_val, _infobox = False, heading = '', description = '', setoff = 0):
 
     mystr = tk.StringVar()
     dropDown = ttk.Combobox(window_name, width = 15, textvariable = mystr, justify='center', state='readonly')
     dropDown.bind("<<ComboboxSelected>>",lambda e: window_name.focus())
-    # Adding combobox drop down list
+
     dropDown['values'] = option_list
     
     label = make_label(window_name, label_val, font_val, setoff)
     width = label.winfo_width()
-    createInfoBox(_infobox, heading, description, window_name, photo, width)
+    
+    createInfoBox(_infobox, heading, description, window_name, width)
+
     dropDown.place(x = config.current_x + width + 40, y = config.current_y + 3)
-    config.current_y = config.current_y + 30
+
+    config.update_config()
 
     return mystr
 
-def createCounterField(window_name, label_val, font_val, photo = icon, _infobox = False, heading = '', description = '', setoff = 0):
+def createCounterField(window_name, label_val, font_val, _infobox = False, heading = '', description = '', setoff = 0):
 
     counter_var=tk.IntVar(value=0)
 
@@ -152,7 +139,7 @@ def createCounterField(window_name, label_val, font_val, photo = icon, _infobox 
     label = make_label(window_name, label_val, font_val, setoff)
     width = label.winfo_width()
 
-    createInfoBox(_infobox, heading, description, window_name, photo, width)
+    createInfoBox(_infobox, heading, description, window_name, width)
 
     decrement_counter.place(x = width + 40 + config.current_x, y = config.current_y)
     counter_entry.place(x = width + 40 + config.current_x + 40, y = config.current_y + 3)
