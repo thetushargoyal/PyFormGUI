@@ -8,14 +8,10 @@ createTrueFalse("Overlap Redirections", window, _infobox = True, heading= 'Overl
 
 createCounterField(window, 'No. of Times hit', 'Arial 11')
 
-list_option = ['Tushar', 'Goyal', 'is', 'the', 'best']
-
-createDropDown(window, list_option, 'Names bahag', 'Arial 11')
-
 optimization_type = ['-O3', '-O2', '-O1']
 
 createDropDown(window, optimization_type, 'Optimization Type', 'Arial 11')
 
-createTextEntry("Number of Harts", window, fixed_val = '', _infobox = True, heading = 'Hello', description = 'What\'s is up')
+createTextEntry("Text also", window, fixed_val = '', _infobox = True, heading = 'Hello', description = 'What\'s is up')
 
 window.mainloop()

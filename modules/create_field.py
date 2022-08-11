@@ -3,7 +3,7 @@ from tkinter import ttk
 import tkinter.messagebox
 import modules.config as config
 
-icon = tk.PhotoImage(file = r"C:\Users\Tushar\Desktop\Work\InCore Semiconductors\images\info_icon.png")
+icon = tk.PhotoImage(file = r"C:\Users\Tushar\Desktop\Work\PyFormGUI\images\info_icon.png")
 
 def make_label(window_name, label_val, font_val, setoff):
     
