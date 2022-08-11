@@ -8,9 +8,7 @@ createTrueFalse("Overlap Redirections", window, _infobox = True, heading= 'Overl
 
 createCounterField(window, 'No. of Times hit', 'Arial 11')
 
-optimization_type = ['-O3', '-O2', '-O1']
-
-createDropDown(window, optimization_type, 'Optimization Type', 'Arial 11')
+createDropDown(window, ['-O3', '-O2', '-O1'], 'Optimization Type', 'Arial 11')
 
 createTextEntry("Text also", window, fixed_val = '', _infobox = True, heading = 'Hello', description = 'What\'s is up')
 
