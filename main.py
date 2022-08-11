@@ -6,8 +6,6 @@ createTextEntry("No. of Harts", window, fixed_val = '', _infobox = True, heading
 
 createTrueFalse("Overlap Redirections", window, _infobox = True, heading= 'Overlap Rediretions', description='Hola gracis')
 
-createTrueFalse("Tushar Goyal", window, _infobox = True, heading= 'Overlap Rediretions', description='Hola gracis')
-
 createCounterField(window, 'No. of Times hit', 'Arial 11')
 
 list_option = ['Tushar', 'Goyal', 'is', 'the', 'best']
