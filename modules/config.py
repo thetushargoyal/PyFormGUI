@@ -15,7 +15,7 @@ window.state('zoomed')
 window.title("Configure Chromite Core")
 
 current_x = 20
-current_y = 50
+current_y = 70
 
 def update_config():
     global current_x, current_y
