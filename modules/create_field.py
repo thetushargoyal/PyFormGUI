@@ -142,7 +142,7 @@ def createCounterField(window_name, label_val, font_val, _infobox = False, headi
 
     decrement_counter.place(x = width + 40 + config.current_x, y = config.current_y)
     counter_entry.place(x = width + 40 + config.current_x + 40, y = config.current_y + 3)
-    increment_counter.place(x = width + 40 + config.current_x + 90, y = config.current_y)
+    increment_counter.place(x = width + 40 + config.current_x + 100, y = config.current_y)
     
     config.update_config()
 
