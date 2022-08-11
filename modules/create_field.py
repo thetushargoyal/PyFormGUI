@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 import tkinter.messagebox
-import config
+import modules.config as config
 
 icon = tk.PhotoImage(file = r"C:\Users\Tushar\Desktop\Work\InCore Semiconductors\images\info_icon.png")
 

@@ -1,4 +1,4 @@
-from imports import *
+from modules.imports import *
 
 top_line_label = tk.Label(window, text="Configure Your Chromite Core", font= "Arial 15 bold").place(relx = 0.5, rely =0.03, anchor = CENTER)
 
