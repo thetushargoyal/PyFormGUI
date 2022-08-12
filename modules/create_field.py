@@ -2,37 +2,47 @@ import tkinter as tk
 from tkinter import ttk
 import tkinter.messagebox
 import modules.config as config
+import os
 
-icon = tk.PhotoImage(file = r"C:\Users\Tushar\Desktop\Work\PyFormGUI\images\info_icon.png")
+image_path = str(os.path.realpath(os.path.join(os.path.dirname(__file__), '..', 'images', 'info_icon.png')))
 
-def make_label(label_val, font_val, setoff, window_name = config.window):
-    
-    label = tk.Label(window_name, text = label_val, font= font_val)
-    label.place(x = config.current_x + setoff, y = config.current_y)
-    window_name.update()
+icon = tk.PhotoImage(file = image_path)
+
+def createFrame(window_frame_name, padx=(0,0), pady=(0,0), side='left', fill = 'none'):
+    frame = tk.Frame(window_frame_name)
+    frame.pack(padx = padx, pady=pady, side=side, fill=fill)
+    return frame
+
+def make_label(label_val, font_val, frame, _infobox):
+    label = tk.Label(frame, text = label_val, font= font_val)
+    if (_infobox == True):
+        label.pack(side = 'left', padx=(10, 0))
+    else:
+        label.pack(side = 'left', padx=(10, 20))
     return label
 
-def createInfoBox(_infobox, heading, description, width, photo = icon, window_name = config.window):
-
+def createInfoBox(_infobox, heading, description, frame, photo = icon):
     def infoBox():
         tkinter.messagebox.showinfo(heading, description)
 
     if (_infobox == True):
-        tk.Button(window_name, image = photo, command = infoBox,  relief = 'flat').place(x=config.current_x + width, y=config.current_y+3)
+        tk.Button(frame, image = photo, command = infoBox,  relief = 'flat').pack(side = 'left', padx=(0, 20))
 
-def createLabel(label_val, font_name = 'Arial', font_size = 11, _infobox = False, heading = '', description = '', setoff = 0, window_name = config.window):
+def createLabel(label_val, font_name = 'Arial', font_size = 11, _infobox = False, heading = '', description = '', window_name = config.window):
 
     font_val = font_name + " " + str(font_size)
 
-    label = make_label(label_val, font_val, setoff)
-    width = label.winfo_width()
+    frame = tk.Frame(window_name)
+
+    frame.pack(pady=(0, 10), side = 'top', fill='x')
+
+    make_label(label_val, font_val, frame, _infobox)
     
-    createInfoBox(_infobox, heading, description, width)   
-    window_name.update()
+    createInfoBox(_infobox, heading, description, frame)   
 
     config.update_config()
 
-def createTextEntry(label_val, font_name = 'Arial', font_size = 11, default_fixed = False, fixed_val = '', _infobox = False, heading = '', description = '', setoff = 0, numbers_only = False, window_name = config.window):
+def createTextEntry(label_val, font_name = 'Arial', font_size = 11, default_fixed = False, fixed_val = '', _infobox = False, heading = '', description = '', numbers_only = False, window_name = config.window):
 
     font_val = font_name + " " + str(font_size)
     state = 'normal'
@@ -45,35 +55,33 @@ def createTextEntry(label_val, font_name = 'Arial', font_size = 11, default_fixe
         mystr.set(fixed_val)
         state='readonly'
 
-    label = make_label(label_val, font_val, setoff)
-    width = label.winfo_width()
+    frame = createFrame(window_name, side='top', fill='x', pady=(0, 10))
 
-    createInfoBox(_infobox, heading, description, width)
+    make_label(label_val, font_val, frame, _infobox)
+    
+    createInfoBox(_infobox, heading, description, frame) 
 
     if (numbers_only == True):
         def validate(u_input): # callback function
             return u_input.isdigit()
         my_valid = window_name.register(validate)
-        tk.Entry(window_name,textvariable=mystr, state=state, font=(font_name, font_size,'normal'), justify='center', validate='key',validatecommand=(my_valid,'%S')).place(x = config.current_x + width + 40, y = config.current_y, width= 100, height = 20)
+        tk.Entry(frame,textvariable=mystr, state=state, font=(font_name, font_size,'normal'), justify='center', width= 10, validate='key',validatecommand=(my_valid,'%S')).pack(side = 'left')
     else:
-        tk.Entry(window_name,textvariable=mystr, state=state, font=(font_name, font_size,'normal'), justify='center').place(x = config.current_x + width + 40, y = config.current_y, width= 100, height = 20)
-
-    window_name.update()
+        tk.Entry(frame,textvariable=mystr, state=state, font=(font_name, font_size,'normal'), justify='center', width = 10).pack(side = 'left')
 
     config.update_config()
 
     return mystr
 
 def createTrueFalse(label_val, 
+                    window_name,
                     font_name = 'Arial', 
                     font_size = 11, 
                     default_fixed = False, 
                     fixed_val = False,
                     _infobox = False, 
                     heading = '', 
-                    description = '',
-                    setoff = 0, 
-                    window_name = config.window):
+                    description = '',):
 
     font_val = font_name + " " + str(font_size)
     state = 'normal'
@@ -87,38 +95,46 @@ def createTrueFalse(label_val,
  
     style.configure('TRadiobutton', font = (font_name, font_size))
 
-    label = make_label(label_val, font_val, setoff)
-    width = label.winfo_width()
+    frame = createFrame(window_name, side='top', fill='x', pady=(0, 10))
 
-    createInfoBox(_infobox, heading, description, width + setoff)
+    frame_1 = createFrame(frame, side='left')
 
-    ttk.Radiobutton(window_name,  text = "True", state=state, variable = mystr, value = True).place(x = config.current_x + width + 40 + setoff, y =config.current_y)
-    ttk.Radiobutton(window_name,  text = "False", state=state, variable = mystr, value = False).place(x = config.current_x + width + 100 + setoff, y =config.current_y)
+    make_label(label_val, font_val, frame_1, _infobox)
+    
+    createInfoBox(_infobox, heading, description, frame_1)
 
+    ttk.Radiobutton(frame,  text = "True", state=state, variable = mystr, value = True).pack(side = 'left', padx=(0, 10))
+    ttk.Radiobutton(frame,  text = "False", state=state, variable = mystr, value = False).pack(side = 'left')
     config.update_config()
 
     return mystr
 
-def createDropDown(option_list, label_val, font_val, _infobox = False, heading = '', description = '', setoff = 0, window_name = config.window):
+def createDropDown(option_list, label_val, font_val, _infobox = False, heading = '', description = '', window_name = config.window):
 
     mystr = tk.StringVar()
-    dropDown = ttk.Combobox(window_name, width = 15, textvariable = mystr, justify='center', state='readonly')
+
+    frame = createFrame(window_name, side='top', fill='x', pady=(0, 10))
+
+    frame_1 = createFrame(frame, side='left')
+
+    make_label(label_val, font_val, frame_1, _infobox)
+    
+    createInfoBox(_infobox, heading, description, frame_1)
+
+    dropDown = ttk.Combobox(frame, width = 15, textvariable = mystr, justify='center', state='readonly')
     dropDown.bind("<<ComboboxSelected>>",lambda e: window_name.focus())
 
     dropDown['values'] = option_list
     
-    label = make_label(label_val, font_val, setoff)
-    width = label.winfo_width()
-    
-    createInfoBox(_infobox, heading, description, width)
 
-    dropDown.place(x = config.current_x + width + 40, y = config.current_y + 3)
+
+    dropDown.pack(side = 'left')
 
     config.update_config()
 
     return mystr
 
-def createCounterField(label_val, font_val, _infobox = False, heading = '', description = '', setoff = 0, window_name = config.window):
+def createCounterField(label_val, font_val, window_name, _infobox = False, heading = '', description = ''):
 
     def increment():
         counter = int(counter_entry.get())
@@ -133,23 +149,28 @@ def createCounterField(label_val, font_val, _infobox = False, heading = '', desc
             counter_entry.delete(0, tk.END)
             counter_entry.insert(0, counter)
 
+    frame = createFrame(window_name, side='top', fill='x', pady=(0, 10))
+
+    frame_1 = createFrame(frame, side='left')
+
+    make_label(label_val, font_val, frame_1, _infobox)
+    
+    createInfoBox(_infobox, heading, description, frame_1)
+
+    frame_2 = createFrame(frame, side='left')
+
     def validate(u_input): # callback function
         return u_input.isdigit()
     my_valid = window_name.register(validate)
 
-    counter_entry = tk.Entry(window_name, font=('Arial',11),justify='center', width= 5, validate='key',validatecommand=(my_valid,'%S'))
+    counter_entry = tk.Entry(frame_2, font=('Arial',11),justify='center', width= 6, validate='key',validatecommand=(my_valid,'%S'))
     counter_entry.insert(0, 0)
-    increment_counter = tk.Button(window_name, command = increment, text='+', width= 2)
-    decrement_counter = tk.Button(window_name, command = decrement, text='-', width=2)
+    increment_counter = tk.Button(frame_2, command = increment, text='+', width= 2)
+    decrement_counter = tk.Button(frame_2, command = decrement, text='-', width=2)
 
-    label = make_label(label_val, font_val, setoff)
-    width = label.winfo_width()
-
-    createInfoBox(_infobox, heading, description, width + setoff)
-
-    decrement_counter.place(x = width + 40 + config.current_x + setoff, y = config.current_y)
-    counter_entry.place(x = width + 40 + config.current_x + 40 + setoff, y = config.current_y + 3)
-    increment_counter.place(x = width + 40 + config.current_x + 100 + setoff, y = config.current_y)
+    decrement_counter.pack(side = 'left')
+    counter_entry.pack(side = 'left', padx=7)
+    increment_counter.pack(side = 'left')
     
     config.update_config()
 

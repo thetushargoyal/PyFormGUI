@@ -1,4 +1,5 @@
 import tkinter as tk
+import platform
 
 #creating window
 window = tk.Tk() 
@@ -11,7 +12,14 @@ height= window.winfo_screenheight()
 window.geometry("%dx%d" % (width, height))
 
 # setting attribute
-window.state('zoomed')
+
+if (platform.system() == 'Windows' or platform.system() == "Darwin"):
+    window.state('zoomed')
+elif (platform.system() == 'Linux'):
+    window.attributes('-zoomed', True)
+else:
+    window.state('normal')
+
 window.title("Configure Chromite Core")
 
 current_x = 15
