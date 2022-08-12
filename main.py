@@ -7,31 +7,34 @@ top_line_label = tk.Label(window,
                           rely =0.03, 
                           anchor = CENTER)
 
-createTextEntry("No. of Harts", 
-                window, 
-                fixed_val = '', 
+createTextEntry("No. of Harts",
+                fixed_val = '545', 
                 _infobox = True, 
                 heading = 'No. of Harts', 
                 description = 'No. of Harts No. of Harts No. of Harts', 
-                numbers_only=True)
+                numbers_only=True,
+                default_fixed=True,
+                )
 
 createTrueFalse("Overlap Redirections", 
-                window, 
                 _infobox = True, 
                 heading= 'Overlap Rediretions', 
                 description='Overlap Rediretions Overlap Rediretions Overlap Rediretions')
 
-createCounterField(window, 
-                  'No. of Times hit', 
-                  'Arial 11')
+createCounterField('No. of Times hit', 
+                  'Arial 11',
+               _infobox = True,
+               heading= 'Optimization',
+               description= 'Hello Mister how do you do?')
 
-createDropDown(window, 
-               [' -O3', ' -O2', ' -O1'], 
+createDropDown([' -O3', ' -O2', ' -O1'], 
                'Optimization Type', 
-               'Arial 11')
+               'Arial 11',
+               _infobox = True,
+               heading= 'Optimization',
+               description= 'Hello Mister how do you do?')
 
 createTextEntry("Text also", 
-                window, 
                 fixed_val = '', 
                 _infobox = True, 
                 heading = 'Hello', 
