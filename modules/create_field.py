@@ -24,7 +24,7 @@ def createLabel(label_val, font_name = 'Arial', font_size = 11, _infobox = False
 
     font_val = font_name + " " + str(font_size)
 
-    label = make_label(window_name, label_val, font_val, setoff)
+    label = make_label(label_val, font_val, setoff)
     width = label.winfo_width()
     
     createInfoBox(_infobox, heading, description, width)   
@@ -145,11 +145,11 @@ def createCounterField(label_val, font_val, _infobox = False, heading = '', desc
     label = make_label(label_val, font_val, setoff)
     width = label.winfo_width()
 
-    createInfoBox(_infobox, heading, description, width)
+    createInfoBox(_infobox, heading, description, width + setoff)
 
-    decrement_counter.place(x = width + 40 + config.current_x, y = config.current_y)
-    counter_entry.place(x = width + 40 + config.current_x + 40, y = config.current_y + 3)
-    increment_counter.place(x = width + 40 + config.current_x + 100, y = config.current_y)
+    decrement_counter.place(x = width + 40 + config.current_x + setoff, y = config.current_y)
+    counter_entry.place(x = width + 40 + config.current_x + 40 + setoff, y = config.current_y + 3)
+    increment_counter.place(x = width + 40 + config.current_x + 100 + setoff, y = config.current_y)
     
     config.update_config()
 

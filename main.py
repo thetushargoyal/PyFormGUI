@@ -7,27 +7,71 @@ top_line_label = tk.Label(window,
                           rely =0.03, 
                           anchor = CENTER)
 
-createTextEntry("No. of Harts",
-                fixed_val = '545', 
+createCounterField("No. of Harts",
+                    'Arial 11',
                 _infobox = True, 
                 heading = 'No. of Harts', 
-                description = 'No. of Harts No. of Harts No. of Harts', 
-                numbers_only=True,
-                default_fixed=True,
+                description = '',
                 )
 
 a = createTrueFalse("Overlap Redirections", 
                 _infobox = True, 
                 heading= 'Overlap Rediretions', 
-                description='Overlap Rediretions Overlap Rediretions Overlap Rediretions',
-                default_fixed=True,
-                fixed_val=True)
+                description='',)
 
-createCounterField('No. of Times hit', 
+b = createTrueFalse("Merged RF", 
+                _infobox = True, 
+                heading= 'Overlap Rediretions', 
+                description='')
+
+createLabel("ISB Sizes")
+
+createCounterField('ISB S0S1', 
                   'Arial 11',
                _infobox = True,
                heading= 'Optimization',
-               description= 'Hello Mister how do you do?')
+               description= 'Hello Mister how do you do?',
+               setoff= 20)
+
+createCounterField('ISB S1S2', 
+                  'Arial 11',
+               _infobox = True,
+               heading= 'Optimization',
+               description= 'Hello Mister how do you do?',
+               setoff= 20)
+
+createCounterField('ISB S2S3', 
+                  'Arial 11',
+               _infobox = True,
+               heading= 'Optimization',
+               description= 'Hello Mister how do you do?',
+               setoff= 20)
+
+createCounterField('ISB S3S4', 
+                  'Arial 11',
+               _infobox = True,
+               heading= 'Optimization',
+               description= 'Hello Mister how do you do?',
+               setoff= 20)
+
+createCounterField('ISB S4S5', 
+                  'Arial 11',
+               _infobox = True,
+               heading= 'Optimization',
+               description= 'Hello Mister how do you do?',
+               setoff= 20)
+
+createCounterField('ISB Cachebuffer', 
+                  'Arial 11',
+               _infobox = True,
+               heading= 'Optimization',
+               description= 'Hello Mister how do you do?',
+               setoff= 20)
+
+createLabel("S Extension")
+
+createTextEntry('Sfence_d_complexity', setoff= 20, fixed_val= 'simple')
+createTextEntry('Sfence_i_complexity', setoff= 20, fixed_val= 'simple')
 
 createDropDown([' -O3', ' -O2', ' -O1'], 
                'Optimization Type', 
