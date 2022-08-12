@@ -16,10 +16,12 @@ createTextEntry("No. of Harts",
                 default_fixed=True,
                 )
 
-createTrueFalse("Overlap Redirections", 
+a = createTrueFalse("Overlap Redirections", 
                 _infobox = True, 
                 heading= 'Overlap Rediretions', 
-                description='Overlap Rediretions Overlap Rediretions Overlap Rediretions')
+                description='Overlap Rediretions Overlap Rediretions Overlap Rediretions',
+                default_fixed=True,
+                fixed_val=True)
 
 createCounterField('No. of Times hit', 
                   'Arial 11',
@@ -40,4 +42,6 @@ createTextEntry("Text also",
                 heading = 'Hello', 
                 description = 'What\'s is up Overlap Rediretions Overlap Rediretions Overlap Rediretions')
 
-window.mainloop()
+
+
+run_window()

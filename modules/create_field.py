@@ -68,7 +68,7 @@ def createTrueFalse(label_val,
                     font_name = 'Arial', 
                     font_size = 11, 
                     default_fixed = False, 
-                    fixed_val = 0,
+                    fixed_val = False,
                     _infobox = False, 
                     heading = '', 
                     description = '',
@@ -78,7 +78,7 @@ def createTrueFalse(label_val,
     font_val = font_name + " " + str(font_size)
     state = 'normal'
 
-    mystr = tk.IntVar(window_name, 0)
+    mystr = tk.BooleanVar(window_name)
     if (default_fixed == True):
         mystr.set(fixed_val)
         state='disabled'
@@ -92,10 +92,12 @@ def createTrueFalse(label_val,
 
     createInfoBox(_infobox, heading, description, width + setoff)
 
-    ttk.Radiobutton(window_name,  text = "True", state=state, variable = mystr, value = 1).place(x = config.current_x + width + 40 + setoff, y =config.current_y)
-    ttk.Radiobutton(window_name,  text = "False", state=state, variable = mystr, value = 0).place(x = config.current_x + width + 100 + setoff, y =config.current_y)
+    ttk.Radiobutton(window_name,  text = "True", state=state, variable = mystr, value = True).place(x = config.current_x + width + 40 + setoff, y =config.current_y)
+    ttk.Radiobutton(window_name,  text = "False", state=state, variable = mystr, value = False).place(x = config.current_x + width + 100 + setoff, y =config.current_y)
 
     config.update_config()
+
+    return mystr
 
 def createDropDown(option_list, label_val, font_val, _infobox = False, heading = '', description = '', setoff = 0, window_name = config.window):
 

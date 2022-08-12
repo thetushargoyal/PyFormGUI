@@ -24,3 +24,6 @@ def update_config():
     else: 
         current_y = 50
         current_x = 500
+
+def run_window(window = window):
+    window.mainloop()
