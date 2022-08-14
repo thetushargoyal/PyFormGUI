@@ -67,4 +67,22 @@ createTextEntry("Text also",
                 description = 'What\'s is up Overlap Rediretions Overlap Rediretions Overlap Rediretions',
                 window_name=frame_1)
 
+window_1 = createWindow(frame_1)
+
+createCounterField("No. of Harts",
+                    'Arial 11',
+                    window_1,
+                _infobox = True, 
+                heading = 'No. of Harts', 
+                description = '',)
+
+window_1_1 = createWindow(window_1)
+
+createCounterField("No. of Harts",
+                    'Arial 11',
+                    window_1_1,
+                _infobox = True, 
+                heading = 'No. of Harts', 
+                description = '',)
+
 run_window()

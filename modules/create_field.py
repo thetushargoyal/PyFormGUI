@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 import tkinter.messagebox
 import modules.config as config
+
 import os
 
 image_path = str(os.path.realpath(os.path.join(os.path.dirname(__file__), '..', 'images', 'info_icon.png')))
@@ -40,8 +41,6 @@ def createLabel(label_val, font_name = 'Arial', font_size = 11, _infobox = False
     
     createInfoBox(_infobox, heading, description, frame)   
 
-    config.update_config()
-
 def createTextEntry(label_val, font_name = 'Arial', font_size = 11, default_fixed = False, fixed_val = '', _infobox = False, heading = '', description = '', numbers_only = False, window_name = config.window):
 
     font_val = font_name + " " + str(font_size)
@@ -68,8 +67,6 @@ def createTextEntry(label_val, font_name = 'Arial', font_size = 11, default_fixe
         tk.Entry(frame,textvariable=mystr, state=state, font=(font_name, font_size,'normal'), justify='center', width= 10, validate='key',validatecommand=(my_valid,'%S')).pack(side = 'left')
     else:
         tk.Entry(frame,textvariable=mystr, state=state, font=(font_name, font_size,'normal'), justify='center', width = 10).pack(side = 'left')
-
-    config.update_config()
 
     return mystr
 
@@ -105,7 +102,6 @@ def createTrueFalse(label_val,
 
     ttk.Radiobutton(frame,  text = "True", state=state, variable = mystr, value = True).pack(side = 'left', padx=(0, 10))
     ttk.Radiobutton(frame,  text = "False", state=state, variable = mystr, value = False).pack(side = 'left')
-    config.update_config()
 
     return mystr
 
@@ -126,11 +122,7 @@ def createDropDown(option_list, label_val, font_val, _infobox = False, heading =
 
     dropDown['values'] = option_list
     
-
-
     dropDown.pack(side = 'left')
-
-    config.update_config()
 
     return mystr
 
@@ -171,7 +163,25 @@ def createCounterField(label_val, font_val, window_name, _infobox = False, headi
     decrement_counter.pack(side = 'left')
     counter_entry.pack(side = 'left', padx=7)
     increment_counter.pack(side = 'left')
-    
-    config.update_config()
 
     return int(counter_entry.get())
+
+def createWindow(frame, window_name = config.window):
+    top2 = tk.Toplevel(window_name,  background='red')
+    top2.title("TopLevel Window")
+    window_frame = createFrame(top2, side = 'top', fill = 'both')
+
+    def hide():
+        top2.grab_release()
+        top2.withdraw()
+
+    top2.protocol('WM_DELETE_WINDOW', hide)  
+    top2.withdraw()
+
+    def show():
+        top2.grab_set()
+        top2.deiconify()
+        
+    tk.Button(frame, command = show, text='+', width=2).pack()
+
+    return window_frame

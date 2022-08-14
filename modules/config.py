@@ -22,16 +22,5 @@ else:
 
 window.title("Configure Chromite Core")
 
-current_x = 15
-current_y = 70
-
-def update_config():
-    global current_x, current_y
-    if (current_y < height - 100):
-        current_y = current_y + 30
-    else: 
-        current_y = 50
-        current_x = 500
-
 def run_window(window = window):
     window.mainloop()
