@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import ttk
 import platform
 
 #creating window
@@ -24,3 +25,5 @@ window.title("Configure Chromite Core")
 
 def run_window(window = window):
     window.mainloop()
+
+font_val = 'Arial 11'

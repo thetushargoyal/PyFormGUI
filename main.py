@@ -1,87 +1,54 @@
 from modules.imports import *
 
-frame_1 = createFrame(config.window, side='left', fill='y', pady=(100,0))
+frame_1 = createFrame(config.window, side='left', fill = 'y', padx=(10, 0))
 
-createCounterField("No. of Harts",
-                    'Arial 11',
-                    frame_1,
-                _infobox = True, 
-                heading = 'No. of Harts', 
-                description = '',)
+num_harts_description = 'Description: Total number of harts to be instantiated in the dummy test-soc. Note that these will non-coherent cores simply acting as masters on the fast-bus.'
 
-createTrueFalse("Overlap ", 
-                    frame_1,
-                _infobox = True, 
+createTextEntry(frame_1, 
+                'num_harts', 
+                infoboxBool = True, 
+                heading='num_harts', 
+                description=num_harts_description, 
+                numbers_only=True)
+
+createTrueFalse(frame_1,
+                "Overlap", 
+                infoboxBool = True, 
                 heading= 'Overlap Rediretions', 
                 description='')
 
-createTrueFalse("Merged RF", 
-                    frame_1,
-                _infobox = True, 
-                heading= 'Overlap Rediretions', 
-                description='')
+createLabel(frame_1, "ISB Sizes")
 
-createLabel("ISB Sizes", window_name=frame_1)
+frame_2 = createFrame(frame_1, side='top', padx=(20, 0))
 
-frame_2 = createFrame(frame_1, side='top', fill='y', padx=(20, 0))
-
-createCounterField('ISB S0S1', 
-                  'Arial 11',
-               _infobox = True,
+createCounterField(frame_2,
+                'ISB S0S1', 
+               infoboxBool = True,
                heading= 'Optimization',
-               description= 'Hello Mister how do you do?',
-               window_name=frame_2)
+               description= 'Hello Mister how do you do?')
 
-createCounterField('ISB S0S1', 
-                  'Arial 11',
-               _infobox = True,
-               heading= 'Optimization',
-               description= 'Hello Mister how do you do?',
-               window_name=frame_2)
+createTextEntry(frame_2, 'Sfence_d_complexity', default_val= 'simple')
 
-createCounterField('ISB S0S1', 
-                  'Arial 11',
-               _infobox = True,
-               heading= 'Optimization',
-               description= 'Hello Mister how do you do?',
-               window_name=frame_2)
-
-createLabel("S Extension", window_name=frame_1)
-
-createTextEntry('Sfence_d_complexity', fixed_val= 'simple', window_name=frame_1)
-
-createTextEntry('Sfence_i_complexity', fixed_val= 'simple', window_name=frame_1)
-
-createDropDown([' -O3', ' -O2', ' -O1'], 
+createDropDown(frame_1,
+               ['-O3', '-O2', '-O1'], 
                'Optimization', 
-               'Arial 11',
-               _infobox = True,
+               infoboxBool = True,
                heading= 'Optimization',
-               description= 'Hello Mister how do you do?',
-               window_name=frame_1)
-
-createTextEntry("Text also", 
-                fixed_val = '', 
-                _infobox = True, 
-                heading = 'Hello', 
-                description = 'What\'s is up Overlap Rediretions Overlap Rediretions Overlap Rediretions',
-                window_name=frame_1)
+               description= 'Hello Mister how do you do?')
 
 window_1 = createWindow(frame_1)
 
-createCounterField("No. of Harts",
-                    'Arial 11',
-                    window_1,
-                _infobox = True, 
-                heading = 'No. of Harts', 
-                description = '',)
+createCounterField(window_1,
+                    "No. of Harts",
+                    infoboxBool = True, 
+                    heading = 'No. of Harts', 
+                    description = '',)
 
-window_1_1 = createWindow(window_1)
+window_1_1 = createWindow(window_1, 'Ways')
 
-createCounterField("No. of Harts",
-                    'Arial 11',
-                    window_1_1,
-                _infobox = True, 
+createCounterField(window_1_1,
+                "No. of Harts",
+                infoboxBool = True, 
                 heading = 'No. of Harts', 
                 description = '',)
 
