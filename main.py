@@ -1,6 +1,6 @@
 from modules.imports import *
 
-frame_1 = createFrame(config.window, side='left', fill = 'y', padx=(10, 0))
+frame_1 = createFrame(config.window, side='left', fill = 'y', padx=(10, 0), pady=(10, 0))
 
 num_harts_description = 'Description: Total number of harts to be instantiated in the dummy test-soc. Note that these will non-coherent cores simply acting as masters on the fast-bus.'
 
@@ -38,13 +38,15 @@ createDropDown(frame_1,
 
 window_1 = createWindow(frame_1)
 
-createCounterField(window_1,
+frame_1_1 = createFrame(window_1, padx=(20, 20), pady=(20, 20))
+
+createCounterField(frame_1_1,
                     "No. of Harts",
                     infoboxBool = True, 
                     heading = 'No. of Harts', 
                     description = '',)
 
-window_1_1 = createWindow(window_1, 'Ways')
+window_1_1 = createWindow(frame_1_1, 'Ways')
 
 createCounterField(window_1_1,
                 "No. of Harts",
