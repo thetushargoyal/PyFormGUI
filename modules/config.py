@@ -21,6 +21,8 @@ elif (platform.system() == 'Linux'):
 else:
     window.state('normal')
 
+
+
 window.title("Configure Chromite Core")
 
 def run_window(window = window):
