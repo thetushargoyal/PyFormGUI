@@ -2,9 +2,9 @@ from cgitb import reset
 from modules.imports import *
 from descriptions import * 
 
-label = ttk.Label(window, text = 'Configure Chromite Core', font = 'Arial 15').pack(side='top', anchor='center')
+label = ttk.Label(window, text = 'Configure Chromite Core', font = 'Arial 15 bold').pack(side='top', anchor='center', padx=(10, 10), pady=(10, 10))
 
-frame_1 = createScrollableFrame(window, side='left', fill = 'y', padx=(10, 10), pady=(10, 50))
+frame_1 = createFrame(window, side='left', fill = 'y', padx=(10, 10), pady=(10, 10))
 
 num_harts_description = 'Description: Total number of harts to be instantiated in the dummy test-soc. Note that these will non-coherent cores simply acting as masters on the fast-bus.'
 
@@ -241,5 +241,35 @@ ovl_assertions = createTrueFalse(bsc_compile_options_frame, 'OVL Assertions', in
 
 bus_protocol = createTextEntry(frame_1, 'Bus Protocol', infoboxBool = True, heading = 'Bus Protocol', description = num_harts_description, default_fixed=True, default_val="AXI4")
 reset_pc = createCounterField(frame_1, 'Reset PC', infoboxBool = True, heading = 'Reset PC', description = num_harts_description, default_val=4096)
+
+verilator_configuration = createWindow(frame_1, 'Verilator Configuration', 'Verilator Configuration', infoboxBool=True, heading='Verilator Configuration', description=isb_sizes_description)
+verilator_configuration_frame = createFrame(verilator_configuration, side='top', fill='x', pady=(10, 10), padx=(10, 10))
+
+coverage = createDropDown(verilator_configuration_frame, ['none', 'line', 'toggle', 'all'], 'Coverage', infoboxBool = True, heading = 'Coverage', description = num_harts_description)
+trace = createTrueFalse(verilator_configuration_frame, 'Trace', infoboxBool = True, heading = 'Trace', description = num_harts_description)
+threads = createCounterField(verilator_configuration_frame, 'Threads', infoboxBool = True, heading = 'Threads', description = num_harts_description, default_val=1)
+verbosity = createTrueFalse(verilator_configuration_frame, 'Verbosity', infoboxBool = True, heading = 'Verbosity', description = num_harts_description, default_val=True)
+out_dir = createTextEntry(verilator_configuration_frame, 'Out Dir', infoboxBool = True, heading = 'Out Dir', description = num_harts_description, default_val="bin")
+opt_fast = createTextEntry(verilator_configuration_frame, 'Opt Fast', infoboxBool = True, heading = 'Opt Fast', description = num_harts_description, default_val='-O3')
+opt_slow = createTextEntry(verilator_configuration_frame, 'Opt Slow', infoboxBool = True, heading = 'Opt Slow', description = num_harts_description, default_val='-O3')
+opt = createTextEntry(verilator_configuration_frame, 'Opt', infoboxBool = True, heading = 'Opt', description = num_harts_description, default_val='-O3')
+
+
+
+dcache_configuration = createWindow(frame_1, 'DCache Configuration', 'DCache Configuration', infoboxBool=True, heading='DCache Configuration', description=isb_sizes_description)
+dcache_configuration_frame = createFrame(dcache_configuration, side='top', fill='x', pady=(10, 10), padx=(10, 10))
+dcache_instantiate = createTrueFalse(dcache_configuration_frame, 'Instantiate', infoboxBool = True, heading = 'DCache Instantiate', description = num_harts_description, default_val=True)
+dcache_sets = createCounterField(dcache_configuration_frame, 'Sets', infoboxBool = True, heading = 'DCache Sets', description = num_harts_description, default_val=4)
+dcache_word_size = createCounterField(dcache_configuration_frame, 'Word Size', infoboxBool = True, heading = 'DCache Word Size', description = num_harts_description, default_val=8)
+dcache_block_size = createCounterField(dcache_configuration_frame, 'Block Size', infoboxBool = True, heading = 'DCache Block Size', description = num_harts_description, default_val=8)
+dcache_ways = createCounterField(dcache_configuration_frame, 'Ways', infoboxBool = True, heading = 'DCache Ways', description = num_harts_description, default_val=4)
+dcache_fb_size = createCounterField(dcache_configuration_frame, 'FB Size', infoboxBool = True, heading = 'DCache FB Size', description = num_harts_description, default_val=8)
+dcache_sb_size = createCounterField(dcache_configuration_frame, 'SB Size', infoboxBool = True, heading = 'DCache SB Size', description = num_harts_description, default_val=2)
+dcache_lb_size = createCounterField(dcache_configuration_frame, 'LB Size', infoboxBool = True, heading = 'DCache LB Size', description = num_harts_description, default_val=2)
+dcache_ib_size = createCounterField(dcache_configuration_frame, 'IB Size', infoboxBool = True, heading = 'DCache IB Size', description = num_harts_description, default_val=2)
+dcache_replacement = createDropDown(dcache_configuration_frame, ["PLRU", "RR", "Random"], 'Replacement', infoboxBool = True, heading = 'DCache Replacement', description = num_harts_description)
+dcache_ecc_enable = createTrueFalse(dcache_configuration_frame, 'ECC Enable', infoboxBool = True, heading = 'DCache ECC Enable', description = num_harts_description)
+dcache_one_select = createTrueFalse(dcache_configuration_frame, 'One Select', infoboxBool = True, heading = 'DCache One Select', description = num_harts_description)
+dcache_rw_ports = createDropDown(dcache_configuration_frame, ['1rw', '1r1w', '2rw'], 'RW Ports', infoboxBool = True, heading = 'DCache RW Ports', description = num_harts_description)
 
 run_window()

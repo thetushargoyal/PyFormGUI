@@ -5,11 +5,8 @@ import tkinter.messagebox
 import modules.config as config
 import os
 
-
 image_path = str(os.path.realpath(os.path.join(os.path.dirname(__file__), '..', 'images', 'info_icon.png')))
 icon = tk.PhotoImage(file = image_path)
-config.window.iconphoto(False, tk.PhotoImage(file=image_path))
-
 
 def createFrame(container, 
                 padx=(0,0), 
@@ -32,14 +29,15 @@ def createScrollableFrame(container,
 
     frame = createFrame(container, side=side, fill = fill, padx=padx, pady=pady, expand=expand)
 
-    my_canvas = tk.Canvas(frame)
-    my_canvas.pack(side='left', fill='both', expand=1)
-
+    my_canvas = tk.Canvas(frame, confine=False)
+    my_canvas.pack(side='left', fill='both')
+    
     yscrollbar = ttk.Scrollbar(frame, orient='vertical', command=my_canvas.yview)
 
     yscrollbar.pack(side='right', fill='y')
 
     my_canvas.configure(yscrollcommand=yscrollbar.set)
+    
     my_canvas.bind('<Configure>', lambda e: my_canvas.configure(scrollregion=my_canvas.bbox("all")))
 
     second_frame = createFrame(my_canvas, side=side, fill = fill, padx=padx, pady=pady, expand=expand)
@@ -261,6 +259,8 @@ def createWindow(container,
     newWindow = tk.Toplevel(container)
     newWindow.title(title)
 
+    image_path = str(os.path.realpath(os.path.join(os.path.dirname(__file__), '..', 'images', 'window_icon.png')))
+    newWindow.iconphoto(False, tk.PhotoImage(file=image_path))
     
     def hide():
         newWindow.grab_release()
