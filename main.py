@@ -1,4 +1,3 @@
-from cgitb import reset
 from modules.imports import *
 from descriptions import * 
 
@@ -136,7 +135,9 @@ history_len = createCounterField(frame_branch_predictor, 'History Len', infoboxB
 history_bits = createCounterField(frame_branch_predictor, 'History Bits', infoboxBool = True, heading = 'num_harts', description = num_harts_description, default_val=0)
 ras_depth = createCounterField(frame_branch_predictor, 'RAS Depth', infoboxBool = True, heading = 'num_harts', description = num_harts_description, default_val=0)
 
-icache_configuration = createWindow(frame_1,
+frame_2 = createFrame(window, side='left', fill = 'y', padx=(10, 10), pady=(10, 10))
+
+icache_configuration = createWindow(frame_2,
                         'ICache Configuration',
                         'ICache Configuration',
                         infoboxBool=True,
@@ -155,12 +156,12 @@ replacement: createDropDown(frame_icache_configuration, ['PLRU', 'RANDOM', 'RR']
 ecc_enable = createTrueFalse(frame_icache_configuration, "ECC Enable", default_val=False, infoboxBool = True, heading = 'num_harts', description = num_harts_description)
 one_hot_select = createTrueFalse(frame_icache_configuration, "Instantiate", default_val=False, infoboxBool = True, heading = 'num_harts', description = num_harts_description)
 
-a_extension = createWindow(frame_1, 'A Extension', 'A Extension', infoboxBool=True, heading='A Extension', description=isb_sizes_description)
+a_extension = createWindow(frame_2, 'A Extension', 'A Extension', infoboxBool=True, heading='A Extension', description=isb_sizes_description)
 
 frame_a_extension = createFrame(a_extension, side='top', fill='both', pady=(10, 10), padx=(10, 10))
 reservation_size = createCounterField(frame_a_extension, 'Reservation Size', infoboxBool = True, heading = 'num_harts', description = num_harts_description, default_val=0)
 
-fd_extension = createWindow(frame_1, 'FD Extension', 'FD Extension', infoboxBool=True, heading='FD Extension', description=isb_sizes_description)
+fd_extension = createWindow(frame_2, 'FD Extension', 'FD Extension', infoboxBool=True, heading='FD Extension', description=isb_sizes_description)
 
 frame_fd_extension = createFrame(fd_extension, side='top', fill='x', pady=(10, 10), padx=(10, 10))
 
@@ -222,14 +223,14 @@ dpfma_stage_4_out = createCounterField(dpfma_stage_4, 'Out', infoboxBool = True,
 
 ordering_depth =  createCounterField(frame_fd_extension, 'Ordering Depth', infoboxBool = True, heading = 'Ordering Depth', description = num_harts_description, default_val=0)
 
-asic_params = createWindow(frame_1, 'ASIC Parameters', 'ASIC Parameters', infoboxBool=True, heading='ASIC Parameters', description=isb_sizes_description)
+asic_params = createWindow(frame_2, 'ASIC Parameters', 'ASIC Parameters', infoboxBool=True, heading='ASIC Parameters', description=isb_sizes_description)
 
 asic_params_frame = createFrame(asic_params, side='top', fill='x', pady=(10, 10), padx=(10, 10))
 
 tech_size = createCounterField(asic_params_frame, 'Tech Size', infoboxBool = True, heading = 'Tech Size', description = num_harts_description, default_val=0)
 frequency_mhz = createCounterField(asic_params_frame, 'Frequency (MHz)', infoboxBool = True, heading = 'Frequency (MHz)', description = num_harts_description, default_val=0)
 
-bsc_compile_options = createWindow(frame_1, 'BSC Compile Options', 'BSC Compile Options', infoboxBool=True, heading='BSC Compile Options', description=isb_sizes_description)
+bsc_compile_options = createWindow(frame_2, 'BSC Compile Options', 'BSC Compile Options', infoboxBool=True, heading='BSC Compile Options', description=isb_sizes_description)
 bsc_compile_options_frame = createFrame(bsc_compile_options, side='top', fill='x', pady=(10, 10), padx=(10, 10))
 
 test_memory_size = createCounterField(bsc_compile_options_frame, 'Test Memory Size', infoboxBool = True, heading = 'Test Memory Size', description = num_harts_description, default_val=0)
@@ -239,10 +240,10 @@ compile_target = createDropDown(bsc_compile_options_frame, ['sim', 'asic', 'fpga
 suppress_warnings = createDropDown(bsc_compile_options_frame, ["none", "all", "G0010","T0054","G0020","G0024","G0023","G0096","G0036","G0117","G0015"], 'Suppress Warnings', infoboxBool = True, heading = 'Suppress Warnings', description = num_harts_description)
 ovl_assertions = createTrueFalse(bsc_compile_options_frame, 'OVL Assertions', infoboxBool = True, heading = 'OVL Assertions', description = num_harts_description)
 
-bus_protocol = createTextEntry(frame_1, 'Bus Protocol', infoboxBool = True, heading = 'Bus Protocol', description = num_harts_description, default_fixed=True, default_val="AXI4")
-reset_pc = createCounterField(frame_1, 'Reset PC', infoboxBool = True, heading = 'Reset PC', description = num_harts_description, default_val=4096)
+bus_protocol = createTextEntry(frame_2, 'Bus Protocol', infoboxBool = True, heading = 'Bus Protocol', description = num_harts_description, default_fixed=True, default_val="AXI4")
+reset_pc = createCounterField(frame_2, 'Reset PC', infoboxBool = True, heading = 'Reset PC', description = num_harts_description, default_val=4096)
 
-verilator_configuration = createWindow(frame_1, 'Verilator Configuration', 'Verilator Configuration', infoboxBool=True, heading='Verilator Configuration', description=isb_sizes_description)
+verilator_configuration = createWindow(frame_2, 'Verilator Configuration', 'Verilator Configuration', infoboxBool=True, heading='Verilator Configuration', description=isb_sizes_description)
 verilator_configuration_frame = createFrame(verilator_configuration, side='top', fill='x', pady=(10, 10), padx=(10, 10))
 
 coverage = createDropDown(verilator_configuration_frame, ['none', 'line', 'toggle', 'all'], 'Coverage', infoboxBool = True, heading = 'Coverage', description = num_harts_description)
@@ -254,9 +255,7 @@ opt_fast = createTextEntry(verilator_configuration_frame, 'Opt Fast', infoboxBoo
 opt_slow = createTextEntry(verilator_configuration_frame, 'Opt Slow', infoboxBool = True, heading = 'Opt Slow', description = num_harts_description, default_val='-O3')
 opt = createTextEntry(verilator_configuration_frame, 'Opt', infoboxBool = True, heading = 'Opt', description = num_harts_description, default_val='-O3')
 
-
-
-dcache_configuration = createWindow(frame_1, 'DCache Configuration', 'DCache Configuration', infoboxBool=True, heading='DCache Configuration', description=isb_sizes_description)
+dcache_configuration = createWindow(frame_2, 'DCache Configuration', 'DCache Configuration', infoboxBool=True, heading='DCache Configuration', description=isb_sizes_description)
 dcache_configuration_frame = createFrame(dcache_configuration, side='top', fill='x', pady=(10, 10), padx=(10, 10))
 dcache_instantiate = createTrueFalse(dcache_configuration_frame, 'Instantiate', infoboxBool = True, heading = 'DCache Instantiate', description = num_harts_description, default_val=True)
 dcache_sets = createCounterField(dcache_configuration_frame, 'Sets', infoboxBool = True, heading = 'DCache Sets', description = num_harts_description, default_val=4)
@@ -271,5 +270,26 @@ dcache_replacement = createDropDown(dcache_configuration_frame, ["PLRU", "RR", "
 dcache_ecc_enable = createTrueFalse(dcache_configuration_frame, 'ECC Enable', infoboxBool = True, heading = 'DCache ECC Enable', description = num_harts_description)
 dcache_one_select = createTrueFalse(dcache_configuration_frame, 'One Select', infoboxBool = True, heading = 'DCache One Select', description = num_harts_description)
 dcache_rw_ports = createDropDown(dcache_configuration_frame, ['1rw', '1r1w', '2rw'], 'RW Ports', infoboxBool = True, heading = 'DCache RW Ports', description = num_harts_description)
+
+def makeYaml():
+    from ruamel import yaml
+    values = {'isb_sizes': {'isb_s0s1': int(isb_s0s1.get()),
+                            'isb_s1s2': int(isb_s1s2.get()),
+                            'isb_s2s3': int(isb_s2s3.get()),
+                            'isb_s3s4': int(isb_s3s4.get()),
+                            'isb_s4s5': int(isb_s4s5.get()),
+                            'isb_cachebuffer': int(isb_cachebuffer.get())}}
+
+    with open('configure.yaml', 'w') as file:
+        yaml.dump(values, file)
+
+    # with open("try1.yaml", "r") as stream:
+    #     try:
+    #         print(yaml.safe_load(stream))
+    #     except yaml.YAMLError as exc:
+    #         print(exc)
+
+bottom_frame = createFrame(window, side='bottom', fill='x', pady=(10, 10), padx=(10, 10))
+ttk.Button(bottom_frame, command = makeYaml, text='Generate Yaml', takefocus=0, style = 'TButton').pack(side = 'right')
 
 run_window()

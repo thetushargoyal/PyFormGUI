@@ -27,6 +27,8 @@ window.iconphoto(False, tk.PhotoImage(file=image_path))
 
 window.title("Incore Semiconductors: Configure Chromite Core")
 
+window.resizable(False, False)
+
 def run_window(window = window):
     window.mainloop()
 

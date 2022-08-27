@@ -122,10 +122,7 @@ def createTextEntry(container,
     if (default_fixed == True):
         mystr.state(["readonly"])
 
-    if (numbers_only == True):
-        return int(mystr.get())
-    else:
-        return str(mystr.get())
+    return mystr
 
 def createTrueFalse(container,
                     label_text, 
@@ -191,7 +188,7 @@ def createDropDown(container,
     dropDown.pack(side = 'right')
     dropDown['values'] = option_list
 
-    return str(mystr.get())
+    return mystr
 
 def createCounterField(container,
                        label_text, 
@@ -274,7 +271,10 @@ def createWindow(container,
         newWindow.grab_current()
         newWindow.deiconify()
         
-    
+    ttk.Label(newWindow, text = label_text, font = 'Arial 15 bold').pack(side='top', anchor='center', padx=(10, 10), pady=(10, 10))
+
+    newWindow.resizable(False, False)
+
     frame = createFrame(container, side = side, fill=fill, pady=pady, padx=padx)
 
     frame_1 = createFrame(frame, side='left')
