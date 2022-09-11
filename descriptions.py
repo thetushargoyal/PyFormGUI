@@ -1,5 +1,0 @@
-isb_sizes_description = '''Description: A dictionary controlling the size of the inter-stage buffers of the pipeline. The variable isb_s0s1 controls the size of the isb between stage0 and stage1. Similarly isb_s1s2 dictates the size of the isb between stage1 and stage2 and so on. By increasing isb_s0s1 and isb_s1s2 one can shadow the stalls or latencies in the backend stages of the pipeline by fetching more instructions into the front-end stages of the pipeline.
-There is a restriction however that isb_s2s3 should always be 1. This is because the outputs of register file accessed in stage2 are not buffered and niether is the bypass scheme implemented to handle this scenario.
-One can however increase the number of in-flight instructions by increasing the sizes of isb_s3s4 and isb_s4s5 (increasing isb_s3s4 has a larger impact).
-Also note that if write-after-write stalls are disabled , the size of the wawid is defined by the sum of isb_s3s4 and isb_s4s5. Therefore, increasing in-flight instructions caused a logarithmic increase in the wawid used for maintaining bypass of operands.'''
-
