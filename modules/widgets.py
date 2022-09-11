@@ -1,12 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
-from tkinter import font
 import tkinter.messagebox
 import modules.config as config
 import os
-
-image_path = str(os.path.realpath(os.path.join(os.path.dirname(__file__), '..', 'images', 'info_icon.png')))
-icon = tk.PhotoImage(file = image_path)
 
 def createFrame(container, 
                 padx=(0,0), 
@@ -60,13 +56,15 @@ def makeLabel(container,
 def createInfoBox(container, 
                   infoboxBool, 
                   heading, 
-                  description, 
-                  photo = icon):
+                  description):
+
+    image_path = str(os.path.realpath(os.path.join(os.path.dirname(__file__), '..', 'assests', 'info_icon.png')))
+    icon = tk.PhotoImage(file = image_path)
 
     def infoBox():
         tkinter.messagebox.showinfo(heading, description)
     if (infoboxBool == True):
-        tk.Button(container, image = photo, command = infoBox, takefocus=0, relief='flat').pack(side = 'left', padx=(0, 20))
+        tk.Button(container, image = icon, command = infoBox, takefocus=0, relief='flat').pack(side = 'left', padx=(0, 20))
 
 def createLabel(container,
                 label_text, 
