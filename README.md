@@ -29,5 +29,15 @@ At the end of your program, call the following function to close the window:
 Window.close_window(main_window)
 ```
 
+Example:
+
+```
+main_window = Window.start_window(title = 'Main Window', windowIcon = 'info_icon.png', fullScreen = False, resizable = True)
+
+Window.end_window(main_window)
+```
+
+This will create the following window i.e. not fullscreen and resizable.
+
 ![screenshot_main_window](https://user-images.githubusercontent.com/92171383/192292074-0d5551c5-dd28-401f-bac8-8f5cb0fda6f9.png)
 
