@@ -32,7 +32,7 @@ Window.close_window(main_window)
 Example:
 
 ```
-main_window = Window.start_window(title = 'Main Window', 
+main_window = Window.start_window(title = 'PyFormGUI', 
                                   windowIcon = 'info_icon.png', 
                                   fullScreen = False, 
                                   resizable = True)
