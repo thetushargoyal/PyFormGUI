@@ -7,3 +7,9 @@ This project was created for making simple forms using built-in Python Tkinter L
 The function has various attributes which can make it read-only, number-only etc. 
 
 Run main.py for the GUI
+
+## Create an instance of the main window
+
+```
+window = Window.start_window('')
+```
