@@ -28,3 +28,6 @@ At the end of your program, call the following function to close the window:
 ```
 Window.close_window(main_window)
 ```
+
+![screenshot_main_window](https://user-images.githubusercontent.com/92171383/192292074-0d5551c5-dd28-401f-bac8-8f5cb0fda6f9.png)
+
