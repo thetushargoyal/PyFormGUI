@@ -42,7 +42,7 @@ main_window = Window.start_window(title = 'Main Window',
                                   fullScreen = False, 
                                   resizable = True,
                                   color = '#000000') #hex for black
-                                  )
+
 
 Window.close_window(main_window)
 ```
