@@ -2,9 +2,13 @@
 
 ## Introduction
 
+Tkinter Tk/Tcl is a cross-platform widget tool kit that is used to create graphical user interfaces (GUIs) for Python programs. Tkinter is included with standard Linux, Microsoft Windows and Mac OS X installs of Python.
+
+PyFormGUI is a Python module that provides a simple interface to Tkinter. It is designed to be easy to use and to provide a powerful set of widgets that are commonly needed in GUI applications. It is a wrapper around the tkinter module. For more information on tkinter, see the official Python documentation. There are different implementations of how differnet functions are implemented on different platforms. PyFormGUI is designed to work on all platforms.
+
 This project was created for making simple forms using built-in Python Tkinter Library that can fetch values and can be used directly within the program with just a single line required for making a field. (Just like Flutter)
 
-The function has various attributes which can make it read-only, number-only etc. 
+The function has various attributes which can make it read-only, number-only etc. (explained below)
 
 Run main.py for the GUI
 
