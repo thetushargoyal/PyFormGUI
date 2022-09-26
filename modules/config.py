@@ -5,7 +5,7 @@ import os
 class Window():
     window = tk.Tk() # Create the window
 
-    def start_window(title, window = window, windowIcon = '', fullScreen = False, resizable = True):
+    def start_window( window = window, title='', windowIcon = '', fullScreen = False, resizable = True):
         
         if (windowIcon != ''):
             image_path = str(os.path.realpath(os.path.join(os.path.dirname(__file__), '..', 'assests', windowIcon)))
