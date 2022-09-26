@@ -10,9 +10,11 @@ Run main.py for the GUI
 
 ## Create an instance of the main window
 
-At the start of your program, call the following function to start the window.
+At the start of your program, call the following function to start the window from the inbuilt Window 
 
-```main_window = Window.start_window('')```
+```
+main_window = Window.start_window('')
+```
 
 This will take the following arguements:
 
@@ -23,4 +25,6 @@ This will take the following arguements:
 
 At the end of your program, call the following function to close the window:
 
-```Window.close_window(main_window)```
+```
+Window.close_window(main_window)
+```
