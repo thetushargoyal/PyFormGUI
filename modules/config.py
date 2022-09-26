@@ -5,7 +5,11 @@ import os
 class Window():
     window = tk.Tk() # Create the window
 
-    def start_window(window = window, title='', windowIcon = '', fullScreen = False, resizable = True):
+    def start_window(window = window, 
+                    title='', windowIcon = '', 
+                    fullScreen = False, 
+                    resizable = True,
+                    color = ''):
         
         if (windowIcon != ''):
             image_path = str(os.path.realpath(os.path.join(os.path.dirname(__file__), '..', 'assests', windowIcon)))
@@ -23,6 +27,9 @@ class Window():
                 window.attributes('-zoomed', True)
             else:
                 window.state('normal')
+
+        if (color != ''):
+            window.configure(bg = color)
 
         return window
 

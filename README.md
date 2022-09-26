@@ -26,6 +26,7 @@ This will take the following arguements:
 2) windowIcon (String): Icon of the window  - store your assets in assets folder and pass the name of the image as a string. Eg. 'icon.png'
 3) fullscreen (Boolean) - True or False - Default is False, if True, the window will be fullscreen
 4) resizable (Boolean) - True or False - Default is True, if False, the window will not be resizable
+5) color (String) - pass the hex code of the color you want the window to be. Eg. '#000000' for black
 
 At the end of your program, call the following function to close the window:
 
@@ -36,10 +37,12 @@ Window.close_window(main_window)
 Example:
 
 ```
-main_window = Window.start_window(title = 'PyFormGUI', 
+main_window = Window.start_window(title = 'Main Window', 
                                   windowIcon = 'info_icon.png', 
                                   fullScreen = False, 
-                                  resizable = True)
+                                  resizable = True,
+                                  color = '#000000') #hex for black
+                                  )
 
 Window.close_window(main_window)
 ```
