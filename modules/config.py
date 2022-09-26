@@ -26,7 +26,7 @@ class Window():
 
         return window
 
-    def end_window(window = window):
+    def end_window(window):
         window.mainloop()
 
 font_val = 'Arial 11'
