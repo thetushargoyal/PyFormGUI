@@ -37,7 +37,7 @@ main_window = Window.start_window(title = 'PyFormGUI',
                                   fullScreen = False, 
                                   resizable = True)
 
-Window.end_window(main_window)
+Window.close_window(main_window)
 ```
 
 This will create the following window i.e. not fullscreen and resizable.
