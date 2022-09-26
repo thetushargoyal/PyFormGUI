@@ -43,8 +43,5 @@ Window.end_window(main_window)
 This will create the following window i.e. not fullscreen and resizable.
 
 <p align="center">
-  <img width="460" height="300" src="https://user-images.githubusercontent.com/92171383/192292074-0d5551c5-dd28-401f-bac8-8f5cb0fda6f9.png">
+  <src="https://user-images.githubusercontent.com/92171383/192292074-0d5551c5-dd28-401f-bac8-8f5cb0fda6f9.png">
 </p>
-
-![screenshot_main_window](https://user-images.githubusercontent.com/92171383/192292074-0d5551c5-dd28-401f-bac8-8f5cb0fda6f9.png)
-
